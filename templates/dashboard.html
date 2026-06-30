@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Dashboard</title>
+
+<link rel="stylesheet"
+href="{{url_for('static',filename='style.css'}}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Dashboard</h1>
+
+<div class="card">
+
+<h2>คะแนนทั้งหมด {{score}}</h2>
+
+<p>✅ ตอบถูก {{correct}} ข้อ</p>
+
+<p>❌ ตอบผิด {{wrong}} ข้อ</p>
+
+<p>เปอร์เซ็นต์
+
+{{(correct/(correct+wrong)*100)|round(2)}}%
+
+</p>
+
+</div>
+
+<table>
+
+<tr>
+
+<th>คำถาม</th>
+
+<th>คำตอบของคุณ</th>
+
+<th>เฉลย</th>
+
+<th>ผล</th>
+
+</tr>
+
+{% for r in result %}
+
+<tr>
+
+<td>{{r.question}}</td>
+
+<td>{{r.user}}</td>
+
+<td>{{r.answer}}</td>
+
+<td>{{r.status}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<a href="/">
+
+<button>เล่นใหม่</button>
+
+</a>
+
+</div>
+
+</body>
+
+</html>

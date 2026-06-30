@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Quiz</title>
+
+<link rel="stylesheet"
+href="{{url_for('static',filename='style.css')}}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>แบบทดสอบ Anatomy</h1>
+
+<form action="/submit" method="post">
+
+{% for q in questions %}
+
+<h3>{{loop.index}}. {{q.question}}</h3>
+
+{% for c in q.choices %}
+
+<input type="radio"
+name="q{{loop.parent.index0}}"
+value="{{c}}" required>
+
+{{c}}
+
+<br>
+
+{% endfor %}
+
+<hr>
+
+{% endfor %}
+
+<button type="submit">ส่งคำตอบ</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>
